@@ -1,0 +1,7 @@
+---
+cluster_name: elasticsearch
+node_name: "{{ host_name }}"
+path_data: "/var/lib/elasticsearch"
+path_logs: "/var/log/elasticsearch"
+network_host: "{{ ansible_host }}"
+http_port: 9200

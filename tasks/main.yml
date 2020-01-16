@@ -1,0 +1,14 @@
+---
+  - include_tasks: ubuntu-install.yml
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+  - include_tasks: centos-install.yml
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+  - name: configure elasticsearch
+    template:
+      src: elasticsearch.yml.j2
+      dest: /etc/elasticsearch/elasticsearch.yml
+      owner: root
+      group: elasticsearch
+    notify: restart elasticsearch
